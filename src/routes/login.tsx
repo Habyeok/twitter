@@ -56,7 +56,7 @@ export default function CreateAccount() {
           placeholder="Password" 
           required
         />
-        <Input 
+        <Input
           type="submit" 
           value={isLoading ?
           "Loading..." : "Log in"}
