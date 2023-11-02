@@ -2,9 +2,10 @@ import { useState } from "react";
 import { auth } from "../firebase";
 import { Link, useNavigate } from "react-router-dom";
 import { FirebaseError } from "firebase/app";
-import { signInWithEmailAndPassword } from "firebase/auth";
-import { Error, Form, Input, Switcher, Title, Wrapper } from "../components/auth-components";
+import { sendPasswordResetEmail, signInWithEmailAndPassword } from "firebase/auth";
+import { Error, Form, Input, Switcher, Title, Wrapper, Btn } from "../components/auth-components";
 import GithubButton from "../components/github-btn";
+import GoogleButton from "../components/google-btn";
 
 export default function CreateAccount() {
   const navigate = useNavigate();
@@ -35,7 +36,16 @@ export default function CreateAccount() {
     } finally {
       setIsLoading(false);
     }
-  }
+  };
+  const onClick = () => {
+    sendPasswordResetEmail(auth, email)
+    .then(() => {
+      alert("가입하신 email을 확인해주세요.");
+    })
+    .catch(() => {
+      alert("등록되지 않은 email입니다.");
+    });
+  };
   return (
     <Wrapper>
       <Title>Log into 😺</Title>
@@ -67,7 +77,12 @@ export default function CreateAccount() {
         Don't have an account? {" "}
         <Link to="/create-account">Create one &rarr;</Link>
       </Switcher>
+      <Switcher>
+        Do you forget your password? {" "}
+        <Btn onClick={onClick}>Find one &rarr;</Btn>
+      </Switcher>
       <GithubButton />
+      <GoogleButton />
     </Wrapper>
   );
 }

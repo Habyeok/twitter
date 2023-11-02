@@ -48,3 +48,10 @@ export const Switcher = styled.span`
     color: yellow;
   }
 `;
+
+export const Btn = styled.span`
+  color: yellow;
+  cursor: pointer;
+  text-decoration: underline yellow 1.5px;
+  ;
+`;
