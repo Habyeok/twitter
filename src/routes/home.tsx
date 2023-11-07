@@ -8,7 +8,7 @@ const Wrapper = styled.div`
   overflow-y: scroll;
   grid-template-rows: 1fr 5fr;
   &::-webkit-scrollbar {
-    display: none;
+  display: none;
   }
 `;
 
