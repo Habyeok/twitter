@@ -46,13 +46,18 @@ const Tweets = styled.div`
 const Column = styled.div``;
 
 const EditNameInput = styled.input``;
-const EditNameImg = styled.label`
-  background-image: url('./public/pencil.svg');
-  cursor: pointer;
-  color: white;
-`;
+
 const EditNameBtn = styled.button`
-  display: flex;
+  background-color: skyblue;
+  color: white;
+  font-weight: 600;
+  border: 0;
+  font-size: 12px;
+  padding: 5px 10px;
+  text-transform: uppercase;
+  border-radius: 5px;
+  margin-left: 5px;
+  cursor: pointer;
 `;
 
 export default function Profile(){
@@ -142,12 +147,11 @@ export default function Profile(){
         ) : (
           <Name>{user?.displayName ?? "Anonymous"}</Name>
         )}
-          <EditNameImg htmlFor="editname">
-            <EditNameBtn
-              onClick={onEditName}
-              id="editname"
-            >{editMode ? "save" : "edit"}</EditNameBtn>
-          </EditNameImg>
+        
+          <EditNameBtn
+            onClick={onEditName}
+            id="editname"
+          >{editMode ? "save" : "edit"}</EditNameBtn>
       </Column>
       <Tweets>
         {tweets.map(tweet => <Tweet key={tweet.id} {...tweet} />)}
